@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+
+    <lst name="responseHeader">
+        <int name="status">0</int>
+        <int name="QTime">0</int>
+        <lst name="params">
+            <str name="json.wrf">callback</str>
+            <str name="qin">X-Country AND collection:prelinger</str>
+            <str name="fl">avg_rating,call_number,collection,contributor,coverage,creator,date,description,downloads,foldoutcount,format,headerImage,identifier,imagecount,language,licenseurl,mediatype,month,num_reviews,oai_updatedate,publicdate,publisher,rights,scanningcentre,source,subject,title,type,volume,week,year</str>
+            <str name="indent" />
+            <str name="start">0</str>
+            <str name="q">(title:X-Country^100 OR description:X-Country^15 OR collection:X-Country^10 OR language:X-Country^10 OR text:X-Country^1) AND collection:prelinger</str>
+            <str name="wt">xml</str>
+            <str name="rows">50</str>
+        </lst>
+    </lst>
+
+
+    <result name="response" numFound="1" start="0">
+        <doc>
+            <arr name="collection">
+                <str>prelinger</str>
+            </arr>
+            <date name="date">1938-01-01T00:00:00Z</date>
+            <str name="description">Screening notes in can should be transcribed.people smiling at camera while they stand at some kind of viewpoint (nice faces)array of signs, including "Welcome to St. Louis," "City Route 66 St. Louis," US 40 Bypass, US 66, "To Go Thru St. Louis Follow City Route 66".Great shots of families lounging in garden or yard of restaurantPan past sign "Please Pay When Served"POV, 2-lane concrete highwayPan over very bare Western motor court with plain square buildings; at end of pan billboards for Standard Red Crown gasoline and Storz beerdriving POVs of mountains, shot out side windowPan uphill looking at UCLA buildings, very uncrowded campus not fully built outPOV of Santa Monica Palisades Park from side window, recognizable if you know what it isGreat, exuberant scenes people horsing around on Santa Monica BeachFamily leaving grocery store with "Double Cola" ad on left (dark shot)Tijuana or Mexicali, Mexico -- adults walking in front of building with giant "Cerveza Mexicali" painted signFootage of main street, probably Blvd. Revolucion in Tijuana, storefronts, etc. (good)VS in Tijuana (good)U.S. Customs inspector at United States-Mexico borderDrive by (POV side window) Lindbergh Field (San Diego, California) with United Air Lines and Ryan Aeronautical Co. hangarsVS house in hills and succulents Cafe Trocadero Grauman's Chinese Theater (title and film bought commercially and spliced in) Motorboats, flying birds and airplane shot from ship (S.S. Catalina) heading towards Catalina Island VS Catalinahorse and carriage on island Chinatown, San Francisco Dense street with many signs: Far East Cafe / Chop Suey, Dong Ming Herbs, Shang Far Low Noodles, Silk KimonosPan over harbor showing many Navy vessels in Bay Brief shot state Capitol, probably Sacramento Two women in front of gas station or auto repair shop playing on toy train marked "40 &amp; 8, Voiture 1131, Wells, Nevada "pan over large dam (not Hoover)VS Old Faithful, visually confusing montage VS Yellowstone: The Pump, Sponge Geyser, Old Faithful, Grotto Geyser,</str>
+            <long name="downloads">225</long>
+            <arr name="format">
+                <str>Animated GIF</str>
+                <str>Archive BitTorrent</str>
+                <str>MPEG4</str>
+                <str>Metadata</str>
+                <str>Ogg Video</str>
+                <str>Thumbnail</str>
+                <str>h.264</str>
+            </arr>
+            <str name="identifier">6358_HM_X-Country_1938_No_1_01_43_28_15</str>
+            <str name="licenseurl">http://creativecommons.org/publicdomain/mark/1.0/</str>
+            <str name="mediatype">movies</str>
+            <long name="month">215</long>
+            <arr name="oai_updatedate">
+                <date>2013-02-10T15:14:09Z</date>
+                <date>2013-02-10T15:58:03Z</date>
+                <date>2013-02-10T15:58:17Z</date>
+            </arr>
+            <date name="publicdate">2013-02-10T15:58:03Z</date>
+            <str name="title">[Home Movies: X-Country, 1938, No. 1]</str>
+            <long name="week">88</long>
+            <int name="year">1938</int>
+        </doc>
+    </result>
+</response>
+
