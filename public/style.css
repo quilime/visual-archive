@@ -1,0 +1,22 @@
+/* style.css */
+
+body {
+    background: #222;
+    color:#ddd;
+    font-family: sans-serif;;
+    font-size: 11px;
+    line-height:16px;
+}
+ul, li {
+    list-style-type: none;
+    padding:0;
+    margin:0;
+}
+ul.thumbs li {
+    margin:5px;
+    display:inline-block;
+}
+ul.thumbs li img {
+    width:160px;
+    height:110px;
+}

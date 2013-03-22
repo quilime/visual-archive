@@ -17,7 +17,7 @@
 # convert gifs/prelinger/0540_Spain_in_Revolt_R3_13_00_52_20_3mb.gif -format "%[scenes]" info: | tail -n 1
 
 import os
-src_path="gifs/prelinger/"
+src_path="gifs/prelinger_anim/"
 dest_path="gifs/prelinger_static/"
 dirList=os.listdir(src_path)
 
@@ -34,19 +34,29 @@ def main():
 
         print gif
         numFrames = get_gif_num_frames(src_path + gif);
-        if (numFrames):
+        if (numFrames > 0):
             if (numFrames > 2):
                 staticFrame = numFrames / 2;
             else:
                 staticFrame = 0;
-            os.system('convert ' + src_path + gif + '[' + str(staticFrame) + '] -coalesce ' + dest_path + gif)
+
+        os.system('convert ' + src_path + gif + '[' + str(staticFrame) + '] -coalesce ' + dest_path + gif)
+        # try:
+        #     with open(dest_path + gif) :
+        #         os.system('convert ' + src_path + gif + '[' + str(staticFrame) + '] -coalesce ' + dest_path + gif)
+        #         pass
+        # except IOError:
+        #     print 'Oh dear.'
+
+
 
 class GIFError(Exception): pass
 def get_gif_num_frames(filename):
     frames = 0
     with open(filename, 'rb') as f:
         if f.read(6) not in ('GIF87a', 'GIF89a'):
-            raise GIFError(filename + ' not a valid GIF file')
+            return -1
+            #raise GIFError(filename + ' not a valid GIF file')
         f.seek(4, 1)
         def skip_color_table(flags):
             if flags & 0x80: f.seek(3 << ((flags & 7) + 1), 1)

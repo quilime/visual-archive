@@ -10,21 +10,29 @@ app.get("/", function(req, res) {
 
   out.push('<ul class="thumbs">');
   // prelinger.clips.length
-  for( var i = 0; i < 50; i++) {
+  var count = 50;
+  for( var i = 0; i < prelinger.clips.length; i++) {
+
+    // count--;
+    // if (count == 0)
+    //   break;
+
     var clip = prelinger.clips[i];
-    var t = clip.thumbnail.split('/');
-    t = t[t.length-1].split('?')[0];
+    var t = clip.thumbnail_filename;
+    var ts = clip.thumbnails_url;
     var url = clip.url;
     out.push([
-      '<li>',
-      '<a href="' + url + '">',
-      '<img onmouseout="this.src=\'prelinger_static/'+t+'\'" onmouseover="this.src=\'prelinger/'+t+'\'" src="prelinger_static/' + t + '">',
+      '<li id="'+ clip.id +'">',
+      '<a href="' + ts + '">',
+      '<img src="prelinger_static/' + t + '">',
       '</a>',
       '</li>'].join("")
       );
   }
   out.push('</ul>');
   out.push('<link rel="stylesheet" type="text/css" href="style.css">');
+  out.push('<script src="jquery-1.9.1.min.js"></script>');
+  out.push('<script src="script.js"></script>');
   var body = out.join("");
 
   res.setHeader('Content-Type', 'text/html');
