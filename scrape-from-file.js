@@ -16,7 +16,6 @@ function (line) {
 );
 
 
-
 // var output = { "clips" : [] };
 // for (var i = 0; i < prelinger.identifiers.length; i++) {
 //     var id = prelinger.identifiers[i];

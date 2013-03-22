@@ -7,5 +7,4 @@ function (line) {
   console.log('"'+line + '",');
   }
 );
-
 console.log(']}');
