@@ -1,4 +1,4 @@
-{ "identifiers" : [
+var ids = [
 "0924_Greatest_Name_in_Wine_The_11_00_13_15",
 "Tuna_Seining_and_Porpoise_Safety_04_22_43_00",
 "0392_HM_Arlington_Virginia_Parade_00_46_53_00",
@@ -3791,4 +3791,27 @@
 "HMPossiblyinConnect98758",
 "HMMichiganFamily98552",
 "GoldenGa1939_2"
-]}
+];
+
+var urls = [];
+for(var i = 0; i < ids.length; i++ ){
+  urls[i] = 'http://archive.org/details/' + ids[i];
+}
+
+pjs.config({
+  timeoutInterval: 5000,
+  timeoutLimit: 10000,
+  format: 'json',
+  writer: 'file',
+  outFile: 'scrape_output.json',
+  pageSettings : { loadImages : false }
+});
+
+pjs.addSuite({
+  url: urls,
+  scrapers: [
+    function() {
+      return $('#thumbnail').attr('src');
+  }
+]
+});
