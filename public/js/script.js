@@ -22,8 +22,8 @@ $(document).ready(function() {
   });
 
   $.getJSON('data/prelinger_extended-search.json', function(data) {
-    $('#filter').show();
     extended_json = data;
+    $('#filter').show();
   });
 
   $('#scrim').click(function() {

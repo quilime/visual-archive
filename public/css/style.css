@@ -15,6 +15,7 @@ a {
     color:#ff0;
 }
 ul.thumbs {
+    margin-top:35px;
     text-align:center;
 }
 ul.thumbs li {
@@ -56,4 +57,8 @@ ul.thumbs li img {
     position:fixed;
     top:5px;
     right:5px;
+    color:#ddd;
+    background:#111;
+    border:1px solid #666;
+    padding:5px;
 }

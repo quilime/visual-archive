@@ -2,7 +2,6 @@ var fs        = require("fs")
 ,   prelinger = require('../prelinger.json');
 
 var LIMIT = false;
-
 exports.index = function(req, res) {
   var count = 10;
   var clips = [];
