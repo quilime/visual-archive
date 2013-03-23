@@ -1,8 +1,6 @@
 
 $(document).ready(function() {
 
-  $(document.body).append('<div id="scrim" />');
-  $(document.body).append('<div id="subcontent"><div class="container"></div></div>');
   $('#scrim').click(function() {
     $('#subcontent').fadeOut(100, function() {
       scrim(0);
@@ -21,7 +19,9 @@ $(document).ready(function() {
     var thumbs_url = $(elem).attr('data-thumbs-url');
 
     link.click(function() {
+
       scrim(1, function() {
+
         $('#subcontent .container').empty();
 
         var offset = 150;
