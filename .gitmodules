@@ -1,3 +1,6 @@
 [submodule "pjscrape"]
       path = pjscrape
       url = git@github.com:nrabinowitz/pjscrape.git
+[submodule "phantomjs"]
+	path = phantomjs
+	url = git@github.com:ariya/phantomjs.git
