@@ -17,9 +17,9 @@ app.get("/", function(req, res) {
   var count = 10;
   for( var i = 0; i < prelinger.clips.length; i++) {
 
-    // count--;
-    // if (count == 0)
-    //   break;
+    count--;
+    if (count == 0)
+      break;
 
     var clip = prelinger.clips[i];
     var t = clip.thumbnail_filename;
