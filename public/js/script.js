@@ -44,6 +44,7 @@ $(document).ready(function() {
   $('#scrim').click(function() {
     $('#subcontent').fadeOut(100, function() {
       scrim(0);
+      $('#subcontent .container').empty();
     });
   });
 
