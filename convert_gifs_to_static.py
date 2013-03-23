@@ -1,20 +1,3 @@
-# import json
-# import os
-# from pprint import pprint
-# json_data = open('prelinger.json')
-
-# data = json.load(json_data)
-# #pprint(data)
-
-# for clip in data['clips']:
-#     thumb = clip['thumbnail'].rpartition('?')[0]
-#     print thumb
-#     os.system('cd gifs/prelinger/; curl -O ' + thumb)
-
-# json_data.close()
-# convert gifs/prelinger/0540_1935_Pontiac_Advertising_R2_13_38_44_00_3mb.gif[3] -coalesce out.gif
-# convert gifs/prelinger/0540_Spain_in_Revolt_R3_13_00_52_20_3mb.gif -format "%[scenes]" info: | tail -n 1
-
 import os
 src_path="gifs/prelinger_anim/"
 dest_path="gifs/prelinger_static/"
@@ -40,12 +23,6 @@ def main():
                 staticFrame = 0;
 
         os.system('convert ' + src_path + gif + '[' + str(staticFrame) + '] -coalesce ' + dest_path + gif)
-        # try:
-        #     with open(dest_path + gif) :
-        #         os.system('convert ' + src_path + gif + '[' + str(staticFrame) + '] -coalesce ' + dest_path + gif)
-        #         pass
-        # except IOError:
-        #     print 'Oh dear.'
 
 
 class GIFError(Exception): pass
@@ -80,4 +57,3 @@ def get_gif_num_frames(filename):
 
 if __name__ == "__main__":
     main()
-
