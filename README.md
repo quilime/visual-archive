@@ -14,3 +14,6 @@ Gifs animate on hover. When clicking on an individual video, the viewer is prese
 
 Collections can be filtered by string.
 ![Overview](https://raw.github.com/quilime/visual-archive/gh-pages/images/filter.png)
+
+Video
+<iframe width="420" height="315" src="http://www.youtube.com/embed/tZ3a6gLevFo" frameborder="0" allowfullscreen></iframe>
