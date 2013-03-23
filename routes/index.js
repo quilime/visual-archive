@@ -14,5 +14,5 @@ exports.index = function(req, res) {
       clips.push(clip);
     }
   }
-  res.render('index', { title: 'Archive Explorer', clips : clips });
+  res.render('index', { title: 'Archive.org/Prelinger Explorer', clips : clips });
 };

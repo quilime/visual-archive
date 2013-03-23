@@ -18,6 +18,7 @@
 
 
     <result name="response" numFound="1" start="0">
+
         <doc>
             <arr name="collection">
                 <str>prelinger</str>
@@ -48,6 +49,52 @@
             <long name="week">88</long>
             <int name="year">1938</int>
         </doc>
+
+        <doc>
+          <float name="avg_rating">3.0</float>
+          <arr name="collection">
+            <str>prelinger</str>
+          </arr>
+          <arr name="creator">
+            <str>Universal-International Newsreel</str>
+          </arr>
+          <str name="description">Action footage of Reno, Nevada rodeo. Jimmy Lederer, Universal Newsreel cameraman, receives Wrangler framed award. Newsreel story.</str>
+          <long name="downloads">5547</long>
+          <arr name="format">
+            <str>256Kb Real Media</str>
+            <str>512Kb MPEG4</str>
+            <str>64Kb Real Media</str>
+            <str>Animated GIF</str>
+            <str>Archive BitTorrent</str>
+            <str>HiRes MPEG4</str>
+            <str>MPEG2</str>
+            <str>Metadata</str>
+            <str>Ogg Video</str>
+            <str>Thumbnail</str>
+          </arr>
+          <str name="identifier">RenoRode1950</str>
+          <str name="licenseurl">http://creativecommons.org/licenses/publicdomain/</str>
+          <str name="mediatype">movies</str>
+          <long name="month">25</long>
+          <int name="num_reviews">2</int>
+          <arr name="oai_updatedate">
+            <date>2002-07-16T00:00:00Z</date>
+            <date>2002-07-16T00:00:00Z</date>
+            <date>2005-01-13T09:36:44Z</date>
+            <date>2012-06-28T20:39:43Z</date>
+            <date>2005-12-31T21:13:47Z</date>
+          </arr>
+          <date name="publicdate">2002-07-16T00:00:00Z</date>
+          <arr name="subject">
+            <str>Newsreels</str>
+            <str>Sports: Rodeo</str>
+            <str>Reno, Nevada</str>
+          </arr>
+          <str name="title">[Reno Rodeo]</str>
+          <str name="type">MovingImage</str>
+          <long name="week">9</long>
+        </doc>
+
     </result>
 </response>
 
