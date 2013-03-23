@@ -2,7 +2,7 @@ A tool for exploring footage collections on archive.org via images. Footage thum
 
 Links to footage from the Prelinger collection from archive.org are included in this repo. Thumbs are not included because of size constraints.
 
-Created during [Tribec4 H4cks](http://www.gaffta.org/2013/02/24/tribeca-hacks-archives/) by Gabriel Dunne and Susan Doran
+Created during [Tribec4 H4cks](http://www.gaffta.org/2013/02/24/tribeca-hacks-archives/) by Gabriel Dunne. Archive Facets/Categories compiled by Susan Doran.
 
 [Project Homepage](http://quilime.github.com/visual-archive/)
 
