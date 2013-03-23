@@ -4,6 +4,7 @@ var express = require("express")
 ,   path    = require('path')
 ,   routes  = require('./routes')
 ,   thumbs  = require('./routes/thumbs')
+,   video  = require('./routes/video')
 ,   port    = 3000;
 
 var app = express();
@@ -29,6 +30,7 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/thumbs/', thumbs.list);
+app.get('/video/', video.list);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

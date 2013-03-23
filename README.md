@@ -16,4 +16,4 @@ Collections can be filtered by string.
 ![Overview](https://raw.github.com/quilime/visual-archive/gh-pages/images/filter.png)
 
 Video
-<iframe width="420" height="315" src="http://www.youtube.com/embed/tZ3a6gLevFo" frameborder="0" allowfullscreen></iframe>
+[![Video](https://raw.github.com/quilime/visual-archive/gh-pages/images/video.png)](http://www.youtube.com/watch?v=tZ3a6gLevFo)

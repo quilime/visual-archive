@@ -80,3 +80,8 @@ ul.thumbs li img {
     padding:0.5em;
 
 }
+#videoplayer {
+    width:100%;
+    height:100%;
+    overflow: auto;
+}

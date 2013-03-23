@@ -64,7 +64,7 @@ $(document).ready(function() {
 
         $('#subcontent .container').empty();
 
-        var offset = 150;
+        var offset = 225;
 
         $('#subcontent').css({
             width : window.innerWidth - offset + "px",
@@ -84,8 +84,17 @@ $(document).ready(function() {
             html: ""
           }).appendTo(destElem);
           $.each(data.links, function(key, thumb) {
-            $('<li><a target="_blank" href="'+thumb.url+'"><img src="' + thumb.img + '"></a></li>')
+            // thumb.url
+            $('<li><a href="#"><img src="' + thumb.img + '"></a></li>')
               .appendTo(destElem + ' ul.thumbs')
+              .click(function(){
+                var c = $('#subcontent .container');
+
+                //thumb.url
+                c.html('<iframe id="videoplayer" src="' + thumb.url + '"></iframe>');
+
+
+              })
           });
         });
 
