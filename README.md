@@ -1,6 +1,6 @@
 A tool for exploring footage collections on archive.org via images. Footage thumbnails animate on mouse over, and when clicked, a list of frames allow the user to jump to a specific timestamp. By browsing archive collections visually, one increases their chances of discovering interesting content.
 
-Created during [Tribea H4cks](http://www.gaffta.org/2013/02/24/tribeca-hacks-archives/)
+Created during [Tribec4 H4cks](http://www.gaffta.org/2013/02/24/tribeca-hacks-archives/)
 
 [Project Homepage](http://quilime.github.com/visual-archive/)
 
