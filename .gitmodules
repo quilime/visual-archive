@@ -1,0 +1,3 @@
+[submodule "pjscrape"]
+      path = pjscrape
+      url = git@github.com:nrabinowitz/pjscrape.git
