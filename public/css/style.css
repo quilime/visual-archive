@@ -12,10 +12,12 @@ ul, li {
     margin:0;
 }
 a {
-    color:#ff0;
+    color:#ff5;
+    text-decoration: none;
 }
 ul.thumbs {
     margin-top:35px;
+    margin-left:120px;
     text-align:center;
 }
 ul.thumbs li {
@@ -49,16 +51,32 @@ ul.thumbs li img {
 #subcontent .container ul {
     padding:20px;
 }
+#subcontent .container ul.thumbs {
+    margin:0;
+}
 #subcontent .container li {
     display:inline-block;
+    background:#222;
     margin:5px;
 }
 #filter {
-    position:fixed;
-    top:5px;
-    right:5px;
     color:#eee;
     background:#777;
     border:1px solid #aaa;
     padding:5px;
+    width:100px;
+}
+#filter-elem {
+    position: absolute;
+    left:5px;
+    top:5px;
+}
+#facets {
+    position:absolute;
+    left:5px;
+    top:40px;
+}
+#clear_filter {
+    padding:0.5em;
+
 }

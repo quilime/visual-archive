@@ -7,7 +7,63 @@
     <script src="js/script.js"></script>
   </head>
   <body>
-    <input type="text" id="filter" />
+
+  <div id="filter-elem">
+    Filter <input type="text" id="filter" /> <a href="#" id="clear_filter">&times;</a>
+  </div>
+
+<div id="facets">
+<ul>
+
+<li>WHAT</li>
+<li><a href="#">Advertising</a></li>
+<li><a href="#">Automobiles</a></li>
+<li><a href="#">Car Culture</a></li>
+<li><a href="#">Children</a></li>
+<li><a href="#">Consumerism</a></li>
+<li><a href="#">Drug</a></li>
+<li><a href="#">Gender Roles</a></li>
+<li><a href="#">Health</a></li>
+<li><a href="#">Medicine</a></li>
+<li><a href="#">Perception</a></li>
+<li><a href="#">Psychology</a></li>
+<li><a href="#">Recreation</a></li>
+<li><a href="#">Safety</a></li>
+<li><a href="#">Social Guidance </a></li>
+<li><a href="#">Teenagers</a></li>
+<li><a href="#">World's Fair</a></li>
+
+<br />
+<li>WHERE</li>
+<li><a href="#">California</a></li>
+<li><a href="#">Detroit</a></li>
+<li><a href="#">New York</a></li>
+<li><a href="#">Philadelphia</a></li>
+<li><a href="#">San Francisco</a></li>
+<li><a href="#">South Dakota</a></li>
+
+<br />
+<li>WHEN</li>
+<li><a href="#">1920</a></li>
+<li><a href="#">1930</a></li>
+<li><a href="#">1940</a></li>
+<li><a href="#">1950</a></li>
+<li><a href="#">1960</a></li>
+<li><a href="#">1970</a></li>
+
+<br />
+<li>FILM TYPE</li>
+<li><a href="#">Amateur</a></li>
+<li><a href="#">Animatation</a></li>
+<li><a href="#">Home Movie</a></li>
+<li><a href="#">Newsreel</a></li>
+<li><a href="#">Soundie</a></li>
+<li><a href="#">Surrealism</a></li>
+<li><a href="#">Training</a></li>
+<li><a href="#">Travelogue</a></li>
+</ul>
+</div>
+
     <ul class="thumbs">
       <% for(var i = 0; i < clips.length; i++) { %>
         <li id="<%= clips[i].id %>" data-thumbs-url="<%= clips[i].thumbnails_url %>">
@@ -17,6 +73,7 @@
         </li>
       <% } %>
     </ul>
+
     <div id="subcontent"><div class="container"></div></div>
     <div id="scrim" />
   </body>
