@@ -1,33 +1,38 @@
 var express = require("express"),
+    request = require('request'),
+    jsdom   = require("jsdom"),
     app     = express(),
+    fs      = require("fs"),
     port    = 3000;
+
+var jquery = fs.readFileSync("./public/jquery-1.9.1.min.js").toString();
 
 var prelinger = require('./prelinger.json');
 
+
 app.get("/", function(req, res) {
-
   var out = [];
-
   out.push('<ul class="thumbs">');
   // prelinger.clips.length
-  var count = 50;
+  var count = 10;
   for( var i = 0; i < prelinger.clips.length; i++) {
 
-    // count--;
-    // if (count == 0)
-    //   break;
+    count--;
+    if (count == 0)
+      break;
 
     var clip = prelinger.clips[i];
     var t = clip.thumbnail_filename;
-    var ts = clip.thumbnails_url;
+    var turl = clip.thumbnails_url;
     var url = clip.url;
     out.push([
-      '<li id="'+ clip.id +'">',
-      '<a href="' + ts + '">',
+      '<li id="'+ clip.id +'" data-thumbs-url="' + turl + '">',
+      '<a href="#">',
       '<img src="prelinger_static/' + t + '">',
       '</a>',
       '</li>'].join("")
       );
+
   }
   out.push('</ul>');
   out.push('<link rel="stylesheet" type="text/css" href="style.css">');
@@ -38,8 +43,62 @@ app.get("/", function(req, res) {
   res.setHeader('Content-Type', 'text/html');
   res.setHeader('Content-Length', body.length);
   res.end(body);
-
 });
+
+
+
+// url proxy
+app.get("/proxy/", function(req, res) {
+  jsdom.env({
+    html : req.query["url"],
+    src : [jquery],
+    done: function (errors, window) {
+      var $ = window.$;
+      var thumbs = [];
+      var as =$("div.box div a");
+      for (var i = 0; i < as.length; i++) {
+        thumbs.push({
+          "url" : "http://archive.org" + $(as[i]).attr('href'),
+          "img" : $(as[i]).find('img').attr('src')
+        });
+      }
+      res.end(JSON.stringify({
+        "url" : req.query["url"],
+        "links" : thumbs
+      }));
+    }
+    // function (errors, window) {
+
+    //   //console.log();
+
+    //   //var $ = window.$;
+
+    //   window.$.each("div.box div a", function(key, val) {
+    //     console.log(val);
+    //   })
+
+    //   var thumbs = window.$("div.box div a img").attr('src');
+
+    //   // console.log(thumbs);
+
+    //   res.end(JSON.stringify({
+    //     "test" : "test",
+    //     "thumbs" : ""
+    //   }));
+    //   //console.log("there have been", window.$("a").length, "nodejs releases!");
+    // }
+  });
+
+  // request(req.query["url"], function (error, response, body) {
+  // if (!error && response.statusCode == 200) {
+  //   jsdom
+  //   res.end(body);
+  // }
+  // })
+})
+
+
+
 
 
 
@@ -56,39 +115,3 @@ app.configure(function(){
 });
 app.listen(port);
 console.log('Listening on port ' + port);
-
-
-
-/*var express = require('express');
-var app = express();
-
-app.use(express.static(__dirname + '/css'));
-
-//app.use("/css", express.static(__dirname + '/css'));
-
-var prelinger = require('./prelinger.json');
-
-app.get('/gifs', function(req, res){
-
-  var out = [];
-  out.push('<ul>');
-  // prelinger.clips.length
-  for( var i = 0; i < 2; i++) {
-    var c = prelinger.clips[i];
-    //out.push('<li><img src="' + c.thumbnail + '" /></li>');
-    var t = c.thumbnail.split('/');
-    t = t[t.length-1].split('?')[0];
-    out.push('<li>' + t + '</li>');
-  }
-  out.push('</ul>');
-  var body = out.join("");
-
-  res.setHeader('Content-Type', 'text/html');
-  res.setHeader('Content-Length', body.length);
-  res.end(body);
-});
-
-app.listen(3000);
-console.log('Listening on port 3000');
-
-*/
