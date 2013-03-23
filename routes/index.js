@@ -1,5 +1,5 @@
 var fs        = require("fs")
-,   prelinger = require('../prelinger_extended-search.json');
+,   prelinger = require('../prelinger.json');
 
 var LIMIT = false;
 
@@ -14,5 +14,5 @@ exports.index = function(req, res) {
       clips.push(clip);
     }
   }
-  res.render('index', { title: 'Archive.org/Prelinger Explorer', clips : clips });
+  res.render('index', { title: 'Visual Archive', clips : clips });
 };

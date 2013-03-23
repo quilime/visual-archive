@@ -1,7 +1,30 @@
+var extended_json = {};
 
 $(document).ready(function() {
 
+  $('#filter').hide();
+  $('#filter').keyup(function() {
+    var query = this.value.toLowerCase();
+    var d = jQuery.grep(extended_json.clips, function(clip, i) {
+      if (clip.id.toLowerCase().indexOf(query) >= 0 ||
+         (clip.description && clip.description.toLowerCase().indexOf(query) >= 0))
+        return true;
+      if (clip.subject)
+        for (var j = 0; j < clip.subject.length; j++)
+          if (clip.subject[j].toLowerCase().indexOf(query) >= 0)
+            return true;
+      return false;
+    });
+    $('.thumbs li').hide();
+    for (var i = 0; i < d.length; i++) {
+      $('.thumbs li#' + d[i].id).show();
+    }
+  });
 
+  $.getJSON('data/prelinger_extended-search.json', function(data) {
+    $('#filter').show();
+    extended_json = data;
+  });
 
   $('#scrim').click(function() {
     $('#subcontent').fadeOut(100, function() {

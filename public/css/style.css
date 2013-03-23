@@ -52,3 +52,8 @@ ul.thumbs li img {
     display:inline-block;
     margin:5px;
 }
+#filter {
+    position:fixed;
+    top:5px;
+    right:5px;
+}

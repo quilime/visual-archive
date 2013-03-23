@@ -9,7 +9,7 @@ exports.list = function(req, res) {
     done: function (errors, window) {
       var $ = window.$;
       var thumbs = [];
-      var as =$("div.box div a");
+      var as = $("div.box div a");
       for (var i = 0; i < as.length; i++) {
         thumbs.push({
           "url" : "http://archive.org" + $(as[i]).attr('href'),
