@@ -23,7 +23,9 @@ $(document).ready(function() {
     link.click(function() {
       scrim(1, function() {
         $('#subcontent .container').empty();
+
         var offset = 150;
+
         $('#subcontent').css({
             width : window.innerWidth - offset + "px",
             height : window.innerHeight - offset + "px",
@@ -35,15 +37,13 @@ $(document).ready(function() {
         $('#subcontent .container').text("loading...");
 
         $.getJSON('/thumbs/?url=' + thumbs_url, function(data) {
-
           $('#subcontent .container').empty();
-
           var destElem = '#subcontent .container';
 
-          $('<div/>', {
-            'class' : 'desc',
-            html : '<p><a target="_blank" href="' + data.url + '"> ' + data.url + ' </a></p>'
-          }).appendTo(destElem);
+          // $('<div/>', {
+          //   'class' : 'desc',
+          //   html : '<p><a target="_blank" href="' + data.url + '"> ' + data.url + ' </a></p>'
+          // }).appendTo(destElem);
 
           $('<ul/>', {
             'class': 'thumbs',
@@ -66,10 +66,10 @@ $(document).ready(function() {
       return false;
     });
     link.hover(function() {
-      img.attr('src', 'prelinger_anim/' + thumb_name);
+      img.attr('src', 'gifs/prelinger_anim/' + thumb_name);
     });
     link.mouseout(function() {
-      img.attr('src', 'prelinger_static/' + thumb_name);
+      img.attr('src', 'gifs/prelinger_static/' + thumb_name);
     });
 
   });

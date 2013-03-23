@@ -1,5 +1,4 @@
 /* style.css */
-
 body {
     background: #222;
     color:#ddd;
@@ -14,6 +13,9 @@ ul, li {
 }
 a {
     color:#ff0;
+}
+ul.thumbs {
+    text-align:center;
 }
 ul.thumbs li {
     margin:5px;
