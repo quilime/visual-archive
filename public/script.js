@@ -23,20 +23,26 @@ $(document).ready(function() {
     link.click(function() {
       scrim(1, function() {
         $('#subcontent .container').empty();
-        $('#subcontent').fadeIn(100);
+        var offset = 150;
+        $('#subcontent').css({
+            width : window.innerWidth - offset + "px",
+            height : window.innerHeight - offset + "px",
+            top : offset / 2,
+            left : offset / 2
+          })
+          .fadeIn(100);
 
-        //console.log(thumbs_url);
+        $('#subcontent .container').text("loading...");
 
         $.getJSON('/thumbs/?url=' + thumbs_url, function(data) {
 
-          var destElem = '#subcontent .container';
+          $('#subcontent .container').empty();
 
-          console.log(data);
-          var items = [];
+          var destElem = '#subcontent .container';
 
           $('<div/>', {
             'class' : 'desc',
-            html : '<a target="_blank" href="' + data.url + '"> ' + data.url + ' </a>'
+            html : '<p><a target="_blank" href="' + data.url + '"> ' + data.url + ' </a></p>'
           }).appendTo(destElem);
 
           $('<ul/>', {
@@ -46,7 +52,7 @@ $(document).ready(function() {
 
           $.each(data.links, function(key, thumb) {
             $('<li><a target="_blank" href="'+thumb.url+'"><img src="' + thumb.img + '"></a></li>')
-              .appendTo('#subcontent .container ul.thumbs')
+              .appendTo(destElem + ' ul.thumbs')
           });
 
         });

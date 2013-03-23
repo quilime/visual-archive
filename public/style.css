@@ -23,9 +23,8 @@ ul.thumbs li img {
     width:160px;
     height:110px;
 }
-
 #scrim {
-    background:rgba(0,0,0,0.5);
+    background:rgba(0,0,0,0.8);
     width:100%;
     height:100%;
     position:fixed;
@@ -34,21 +33,18 @@ ul.thumbs li img {
     z-index: 100;
     display: none;
 }
-
 #subcontent {
+    overflow: auto;
     position:fixed;
     z-index:200;
     display:none;
-    left: 50%;
-    top:20px;
-    width:75%;
+    background:#333;
 }
 #subcontent .container {
-    position: relative;
-    left: -50%;
-    background:#444;
-    width:100%;
     text-align:center;
+}
+#subcontent .container ul {
+    padding:20px;
 }
 #subcontent .container li {
     display:inline-block;
