@@ -39,28 +39,15 @@ $(document).ready(function() {
         $.getJSON('/thumbs/?url=' + thumbs_url, function(data) {
           $('#subcontent .container').empty();
           var destElem = '#subcontent .container';
-
-          // $('<div/>', {
-          //   'class' : 'desc',
-          //   html : '<p><a target="_blank" href="' + data.url + '"> ' + data.url + ' </a></p>'
-          // }).appendTo(destElem);
-
           $('<ul/>', {
             'class': 'thumbs',
             html: ""
           }).appendTo(destElem);
-
           $.each(data.links, function(key, thumb) {
             $('<li><a target="_blank" href="'+thumb.url+'"><img src="' + thumb.img + '"></a></li>')
               .appendTo(destElem + ' ul.thumbs')
           });
-
         });
-
-        // $.load("/proxy/?url=" + thumbs_url + ' div.box div ', function(response, status, xhr) {
-        //   // alert('Load was performed.');
-        //   console.log(response);
-        // });
 
       });
       return false;
@@ -82,6 +69,3 @@ var scrim = function(visible, callback) {
   else
     s.fadeOut(150, callback);
 }
-
-
-//onmouseout="this.src=\'prelinger_static/'+t+'\'" onmouseover="this.src=\'prelinger/'+t+'\'"
