@@ -1,5 +1,5 @@
 var fs        = require("fs")
-,   prelinger = require('../prelinger.json');
+,   prelinger = require('../prelinger_extended-search.json');
 
 var LIMIT = false;
 
