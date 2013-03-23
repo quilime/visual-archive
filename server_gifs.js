@@ -17,21 +17,27 @@ app.get("/", function(req, res) {
   var count = 10;
   for( var i = 0; i < prelinger.clips.length; i++) {
 
-    count--;
-    if (count == 0)
-      break;
+    // count--;
+    // if (count == 0)
+    //   break;
 
     var clip = prelinger.clips[i];
     var t = clip.thumbnail_filename;
     var turl = clip.thumbnails_url;
     var url = clip.url;
-    out.push([
-      '<li id="'+ clip.id +'" data-thumbs-url="' + turl + '">',
-      '<a href="#">',
-      '<img src="prelinger_static/' + t + '">',
-      '</a>',
-      '</li>'].join("")
-      );
+
+    var ext = t.split('.')[1];
+
+
+    if (ext == 'gif') {
+      out.push([
+        '<li id="'+ clip.id +'" data-thumbs-url="' + turl + '">',
+        '<a href="#">',
+        '<img src="prelinger_static/' + t + '">',
+        '</a>',
+        '</li>'].join("")
+        );
+    }
 
   }
   out.push('</ul>');
@@ -48,7 +54,7 @@ app.get("/", function(req, res) {
 
 
 // url proxy
-app.get("/proxy/", function(req, res) {
+app.get("/thumbs/", function(req, res) {
   jsdom.env({
     html : req.query["url"],
     src : [jquery],
@@ -67,34 +73,7 @@ app.get("/proxy/", function(req, res) {
         "links" : thumbs
       }));
     }
-    // function (errors, window) {
-
-    //   //console.log();
-
-    //   //var $ = window.$;
-
-    //   window.$.each("div.box div a", function(key, val) {
-    //     console.log(val);
-    //   })
-
-    //   var thumbs = window.$("div.box div a img").attr('src');
-
-    //   // console.log(thumbs);
-
-    //   res.end(JSON.stringify({
-    //     "test" : "test",
-    //     "thumbs" : ""
-    //   }));
-    //   //console.log("there have been", window.$("a").length, "nodejs releases!");
-    // }
   });
-
-  // request(req.query["url"], function (error, response, body) {
-  // if (!error && response.statusCode == 200) {
-  //   jsdom
-  //   res.end(body);
-  // }
-  // })
 })
 
 

@@ -27,19 +27,28 @@ $(document).ready(function() {
 
         //console.log(thumbs_url);
 
-        $.getJSON('/proxy/?url=' + thumbs_url, function(data) {
+        $.getJSON('/thumbs/?url=' + thumbs_url, function(data) {
+
+          var destElem = '#subcontent .container';
 
           console.log(data);
-          // var items = [];
+          var items = [];
 
-          // $.each(data, function(key, val) {
-          //   items.push('<li id="' + key + '">' + val + '</li>');
-          // });
+          $('<div/>', {
+            'class' : 'desc',
+            html : '<a target="_blank" href="' + data.url + '"> ' + data.url + ' </a>'
+          }).appendTo(destElem);
 
-          // $('<ul/>', {
-          //   'class': 'my-new-list',
-          //   html: items.join('')
-          // }).appendTo('body');
+          $('<ul/>', {
+            'class': 'thumbs',
+            html: ""
+          }).appendTo(destElem);
+
+          $.each(data.links, function(key, thumb) {
+            $('<li><a target="_blank" href="'+thumb.url+'"><img src="' + thumb.img + '"></a></li>')
+              .appendTo('#subcontent .container ul.thumbs')
+          });
+
         });
 
         // $.load("/proxy/?url=" + thumbs_url + ' div.box div ', function(response, status, xhr) {
