@@ -7,7 +7,10 @@ exports.list = function(req, res) {
     html : req.query["url"],
     src : [jquery],
     done: function (errors, window) {
-      var $ = window.$;
+      var $ = window.$ || null;
+      if (!$) {
+        res.send(JSON.stringify({}));
+      }
       var thumbs = [];
       var as = $("div.box div a");
       for (var i = 0; i < as.length; i++) {
