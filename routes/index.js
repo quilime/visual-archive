@@ -1,9 +1,10 @@
 var fs        = require("fs")
 ,   prelinger = require('../prelinger_extended-search.json');
 
-var LIMIT = false;
+var LIMIT = true;
+var count = 50;
+
 exports.index = function(req, res) {
-  var count = 50;
   var clips = [];
   for( var i = 0; i < prelinger.clips.length; i++) {
     if (LIMIT) { count--; if (count == 0) { break; } }
