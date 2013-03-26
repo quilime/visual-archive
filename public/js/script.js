@@ -36,7 +36,7 @@ $(document).ready(function() {
   $('#filter').keyup(on_filter_change);
 
 
-  $.getJSON('data/prelinger_extended-search.json', function(data) {
+  $.getJSON('./data/prelinger_extended-search.json', function(data) {
     extended_json = data;
     $('#filter').show();
   });

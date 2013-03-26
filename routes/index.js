@@ -1,7 +1,7 @@
 var fs        = require("fs")
-,   prelinger = require('../prelinger_extended-search.json');
+,   prelinger = require('../data/prelinger_extended-search.json');
 
-var LIMIT = true;
+var LIMIT = false;
 var count = 50;
 
 exports.index = function(req, res) {

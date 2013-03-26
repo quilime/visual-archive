@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/css/style.css' />
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/script.js"></script>
-  </head>
-  <body>
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/css/style.css' />
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/script.js"></script>
+</head>
+<body>
 
-  <div id="filter-elem">
-    <input type="text" id="filter" /> <a href="#" id="clear_filter">&times;</a>
-  </div>
+<div id="filter-elem">
+  <input type="text" id="filter" /> <a href="#" id="clear_filter">&times;</a>
+</div>
 
 <div id="facets">
 <ul>
-
 <li>WHAT</li>
 <li><a href="#">Advertising</a></li>
 <li><a href="#">Automobiles</a></li>
@@ -32,7 +31,6 @@
 <li><a href="#">Social Guidance </a></li>
 <li><a href="#">Teenager</a></li>
 <li><a href="#">World's Fair</a></li>
-
 <br />
 <li>WHERE</li>
 <li><a href="#">California</a></li>
@@ -41,7 +39,6 @@
 <li><a href="#">Philadelphia</a></li>
 <li><a href="#">San Francisco</a></li>
 <li><a href="#">South Dakota</a></li>
-
 <br />
 <li>WHEN</li>
 <li><a href="#">1920</a></li>
@@ -50,7 +47,6 @@
 <li><a href="#">1950</a></li>
 <li><a href="#">1960</a></li>
 <li><a href="#">1970</a></li>
-
 <br />
 <li>FILM TYPE</li>
 <li><a href="#">Amateur</a></li>
@@ -64,17 +60,17 @@
 </ul>
 </div>
 
-    <ul class="thumbs">
-      <% for(var i = 0; i < clips.length; i++) { %>
-        <li id="<%= clips[i].id %>" data-thumbs-url="<%= clips[i].thumbnails_url %>">
-          <a href="#">
-            <img src="gifs/prelinger_static/<%= clips[i].thumbnail_filename %>">
-          </a>
-        </li>
-      <% } %>
-    </ul>
+<ul class="thumbs">
+  <% for(var i = 0; i < clips.length; i++) { %>
+    <li id="<%= clips[i].id %>" data-thumbs-url="<%= clips[i].thumbnails_url %>">
+      <a href="#">
+        <img src="gifs/prelinger_static/<%= clips[i].thumbnail_filename %>">
+      </a>
+    </li>
+  <% } %>
+</ul>
 
-    <div id="subcontent"><div class="container"></div></div>
-    <div id="scrim" />
-  </body>
+<div id="subcontent"><div class="container"></div></div>
+<div id="scrim" />
+</body>
 </html>
