@@ -1,4 +1,5 @@
 {
+  "node-main": "app.js",
   "name": "archive-browser",
   "description": "archive-browser",
   "version": "0.0.1",

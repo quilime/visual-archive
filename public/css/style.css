@@ -15,6 +15,9 @@ a {
     color:#aaa;
     text-decoration: none;
 }
+a:hover {
+    color:#ddd;
+}
 input {
     font-family: sans-serif;
     font-size: 12px;
