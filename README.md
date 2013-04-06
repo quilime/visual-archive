@@ -1,3 +1,5 @@
+Requires: Node v0.6.14
+
 A tool for exploring footage collections on archive.org via images. Footage thumbnails animate on mouse over, and when clicked, a list of frames allow the user to jump to a specific timestamp. By browsing archive collections visually, one increases their chances of discovering interesting content.
 
 Links to footage from the Prelinger collection from archive.org are included in this repo. Thumbs are not included because of size constraints.
