@@ -41,6 +41,11 @@ ul.thumbs li img {
     width:160px;
     height:110px;
 }
+
+#loader {
+    margin-left:300px;
+}
+
 #scrim {
     background:rgba(0,0,0,0.8);
     width:100%;

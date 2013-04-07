@@ -3803,7 +3803,7 @@ pjs.config({
   timeoutLimit: 10000,
   format: 'json',
   writer: 'file',
-  outFile: 'scrape_output.json',
+  outFile: 'info_scrape_output.json',
   pageSettings : { loadImages : false }
 });
 
