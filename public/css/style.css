@@ -27,15 +27,19 @@ input {
     padding:5px;
 }
 
-
 ul.thumbs {
     margin-top:2px;
-    margin-left:120px;
-    text-align:center;
+    margin-left:150px;
 }
 ul.thumbs li {
     margin:5px;
     display:inline-block;
+}
+ul.thumbs li a {
+    display:inline-block;
+    width:160px;
+    height:110px;
+    background:#222;
 }
 ul.thumbs li img {
     width:160px;
@@ -64,7 +68,6 @@ ul.thumbs li img {
     background:#333;
 }
 #subcontent .container {
-    text-align:center;
 }
 #subcontent .container ul {
     padding:20px;
@@ -101,4 +104,26 @@ ul.thumbs li img {
     width:100%;
     height:100%;
     overflow: auto;
+}
+
+
+
+#minimap {
+    width: 160px;
+    height: 2000px;
+    position:fixed;
+    right: 2px;
+    top: 2px;
+}
+#minimap canvas {
+    width:160px;
+    height:2000px;
+}
+#minimap .view {
+    position: absolute;
+    width: 160px;
+    height: 110px;
+    border: 1px solid #d00;
+    top:0;
+    left:0;
 }

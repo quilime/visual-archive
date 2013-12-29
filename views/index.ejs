@@ -78,9 +78,9 @@ url: "http://archive.org/details/0924_Greatest_Name_in_Wine_The_11_00_13_15"
 
 <ul id="thumbs" class="thumbs">
   <% for(var i = 0; i < clips.length; i++) { %>
-    <li id="<%= clips[i].id %>" data-thumbs-url="<%= clips[i].thumbnails_url %>">
-      <a href="#">
-        <img src="gifs/prelinger_static/<%= clips[i].thumbnail_filename %>">
+    <li id="<%= clips[i].id %>">
+      <a href="<%= clips[i].thumbnails_url %>">       
+     <img src="gifs/prelinger_static/<%= clips[i].thumbnail_filename %>"> 
       </a>
     </li>
   <% } %>
@@ -91,7 +91,13 @@ url: "http://archive.org/details/0924_Greatest_Name_in_Wine_The_11_00_13_15"
     <a id="thumbs-next" href="#">Next &raquo;</a>
 </div>
 
+<div id="minimap">
+  <canvas id="minimap-canvas"></canvas>
+  <div class="view"></div>
+</div>
+
 <div id="subcontent"><div class="container"></div></div>
-<div id="scrim" />
+<div id="scrim"></div>
+
 </body>
 </html>

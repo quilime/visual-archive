@@ -1,5 +1,49 @@
 var extended_json = {};
 
+
+var mm = {};
+mm.th = 110;
+mm.tw = 160;
+mm.numW = 0;
+mm.numTH = 0;
+mm.draw = function() {
+
+    var mmth = 5;
+    var mmtw = 8;
+
+    console.log(mm.numW, mm.numTH);
+
+    var canvas = document.getElementById('minimap-canvas');
+    if (canvas.getContext) {
+
+	canvas.width  = 160;
+	canvas.height = 2000;
+
+	var ctx = canvas.getContext('2d');
+	ctx.fillStyle = "white";
+
+	for(var j = 0; j < mm.numTH / mm.numW; j++) {
+	    for (var i = 0; i < mm.numW; i++) {
+		ctx.fillRect((mmtw + 2) * i, (mmth + 2)*j, mmtw, mmth);
+	    }
+	}
+    }
+};
+mm.update = function() {
+    mm.numW = Math.floor($("ul.thumbs").width() / (mm.tw + 20));
+    mm.draw();
+};
+
+$(window).resize(function() {
+    setTimeout(mm.update, 1000);
+});
+
+$(document).scroll(function() {
+    $('#minimap .view').css({top : ($(document).scrollTop() * 0.05) + "px"  });;
+});
+
+
+
 $(document).ready(function() {
 
   $('#thumbs').hide();
@@ -21,6 +65,9 @@ $(document).ready(function() {
     extended_json = data;
     $('#loader').hide();
     $('#thumbs').show();
+
+    mm.numTH = extended_json.clips.length;
+    mm.update();
   });
 
   $('#scrim').click(function() {
@@ -29,6 +76,7 @@ $(document).ready(function() {
       $('#subcontent .container').empty();
     });
   });
+
 
   $.each( $('.thumbs li'), function( key, elem ) {
 
@@ -41,6 +89,7 @@ $(document).ready(function() {
     var img = $(link).find('img');
     var thumbs_url = $(elem).attr('data-thumbs-url');
 
+      /*
     link.click(function() {
       scrim(1, function() {
         var offset = 225;
@@ -56,6 +105,7 @@ $(document).ready(function() {
 
         // scrape archive.org for thumbs to insert
         $.getJSON('/thumbs/?url=' + thumbs_url, function(data) {
+	    console.log(data);
           $('#subcontent .container').empty();
           var destElem = '#subcontent .container';
           $('<ul/>', {
@@ -76,6 +126,7 @@ $(document).ready(function() {
       });
       return false;
     });
+*/
     link.hover(function() {
       img.attr('src', 'gifs/prelinger_anim/' + thumb_name);
     });
@@ -83,6 +134,10 @@ $(document).ready(function() {
       img.attr('src', 'gifs/prelinger_static/' + thumb_name);
     });
   });
+  
+
+
+
 });
 
 
@@ -98,10 +153,15 @@ var on_filter_change = function() {
           return true;
     return false;
   });
+
   $('.thumbs li').hide();
+
   for (var i = 0; i < d.length; i++) {
     $('.thumbs li#' + d[i].id).show();
   }
+
+  mm.numTH = i;
+  mm.update();
 };
 
 
