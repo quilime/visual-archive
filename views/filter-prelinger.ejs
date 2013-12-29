@@ -1,0 +1,71 @@
+
+<div id="facets">
+<ul>
+<li>WHAT</li>
+<li><a href="#">Advertising</a></li>
+<li><a href="#">Automobiles</a></li>
+<li><a href="#">Car Culture</a></li>
+<li><a href="#">Children</a></li>
+<li><a href="#">Consumerism</a></li>
+<li><a href="#">Drug</a></li>
+<li><a href="#">Gender Roles</a></li>
+<li><a href="#">Health</a></li>
+<li><a href="#">Medicine</a></li>
+<li><a href="#">Perception</a></li>
+<li><a href="#">Psychology</a></li>
+<li><a href="#">Recreation</a></li>
+<li><a href="#">Safety</a></li>
+<li><a href="#">Social Guidance </a></li>
+<li><a href="#">Teenager</a></li>
+<li><a href="#">World's Fair</a></li>
+<br />
+<li>WHERE</li>
+<li><a href="#">California</a></li>
+<li><a href="#">Detroit</a></li>
+<li><a href="#">New York</a></li>
+<li><a href="#">Philadelphia</a></li>
+<li><a href="#">San Francisco</a></li>
+<li><a href="#">South Dakota</a></li>
+<br />
+<li>WHEN</li>
+<li><a href="#">1920</a></li>
+<li><a href="#">1930</a></li>
+<li><a href="#">1940</a></li>
+<li><a href="#">1950</a></li>
+<li><a href="#">1960</a></li>
+<li><a href="#">1970</a></li>
+<br />
+<li>FILM TYPE</li>
+<li><a href="#">Amateur</a></li>
+<li><a href="#">Animation</a></li>
+<li><a href="#">Home Movie</a></li>
+<li><a href="#">Newsreel</a></li>
+<li><a href="#">Soundie</a></li>
+<li><a href="#">Surrealism</a></li>
+<li><a href="#">Training</a></li>
+<li><a href="#">Travelogue</a></li>
+</ul>
+</div>
+
+<!--
+
+date: "2012-07-09T20:32:09Z"
+description: "Shot of containers of chlorine compounds for swimming pool sanitation Much of it is silent CUs of a puppet show VS Italian Swiss Colony vineyards Some is A&B, some outtakes US 101 south of Petaluma driving POV Petaluma City Limit Pop. 10,315 sign Brief shot boats at Fishermen's Wharf, San Francisco with Golden Gate Bridge in background More US 101 highway driving POVs, probably Sonoma County, California California US 101 highway marker"
+id: "0924_Greatest_Name_in_Wine_The_11_00_13_15"
+thumbnail: "https://ia700608.us.archive.org/17/items/0924_Greatest_Name_in_Wine_The_11_00_13_15/0924_Greatest_Name_in_Wine_The_11_00_13_15_3mb.gif"
+thumbnail_filename: "0924_Greatest_Name_in_Wine_The_11_00_13_15_3mb.gif"
+thumbnails_url: "http://archive.org/movies/thumbnails.php?identifier=0924_Greatest_Name_in_Wine_The_11_00_13_15"
+title: "Greatest Name in Wine, The"
+url: "http://archive.org/details/0924_Greatest_Name_in_Wine_The_11_00_13_15"
+
+ -->
+
+<ul id="thumbs" class="thumbs">
+  <% for(var i = 0; i < clips.length; i++) { %>
+    <li id="<%= clips[i].id %>">
+      <a href="<%= clips[i].thumbnails_url %>">       
+     <img src="gifs/prelinger_static/<%= clips[i].thumbnail_filename %>"> 
+      </a>
+    </li>
+  <% } %>
+</ul>
