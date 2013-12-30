@@ -11,7 +11,7 @@ var revealThumbs = function() {
     var winInnerH = $(window).innerHeight();
     var numCols = Math.floor(thumbsW / thumbW);
     var numRows = Math.ceil(winInnerH / thumbH) * 2;
-    var offset  = Math.max(Math.floor($(window).scrollTop() / thumbH) * numCols, 0);
+    var offset  = Math.max((Math.floor(($(window).scrollTop() - $('ul.thumbs').position().top) / thumbH) * numCols), 0);
 /*
     console.log( 
 	numCols,
@@ -23,8 +23,7 @@ var revealThumbs = function() {
     var c = 0;
     $.each( currentItems, function( key, elem ) {
 	if (key >= offset && key < offset + numCols * numRows) {
-	    loadThumb(elem, 10 * c);
-	    c++;
+	    loadThumb(elem, 10 * c++);
 	}
     });
 }
@@ -38,7 +37,9 @@ var loadThumb = function(elem, fadeOffset) {
     var img = $('<img/>');
     img.attr('src', $(elem).attr('data-thumb-src'));
     img.hide();
-    setTimeout(function() { img.fadeIn(150); }, fadeOffset);
+    img.load(function() {
+	setTimeout(function() { img.fadeIn(150); }, fadeOffset);
+    });
     
     var a = $('<a>');
     a.attr('href', $(elem).attr('data-thumbs-url'));
@@ -54,6 +55,8 @@ var loadThumb = function(elem, fadeOffset) {
     a.mouseout(function() {
 	img.attr('src', 'gifs/prelinger_static/' + th_nm);
     });
+
+
    
     $(elem).append(a);
 }
@@ -61,32 +64,37 @@ var loadThumb = function(elem, fadeOffset) {
 
 $(document).ready(function() {
 
-  window.onscroll = debounce(function (e) {
-      revealThumbs();
-  }, 250, false);
+    $('#facets').dropit();
 
-  $('#facets a').each(function(key, elem) {
-    $(elem).click(function(e) {
-      e.preventDefault();
-      $('#filter').val($(elem).text());
-      on_filter_change();
+    window.onscroll = debounce(function (e) {
+	revealThumbs();
+    }, 250, false);
+
+    $('#facets a').click(function(e){ e.preventDefault(); });
+    $('#facets ul a').each(function(key, elem) {
+	$(elem).click(function(e) {
+	    e.preventDefault();
+	    $('#filter').val($(elem).text());
+	    on_filter_change();
+	});
     });
-  })
 
-  $('#clear_filter').click(function(e){
-    e.preventDefault();
-    $('#filter').val("");
-    on_filter_change();
-  });
-  $('#filter').keyup(on_filter_change);
+    $('#filter')[0].onkeyup = debounce(function(e) {
+	on_filter_change();
+    }, 250, false);
+    $('#nav h1 a').click(function(e){
+	e.preventDefault();
+	$('#filter').val("");
+	on_filter_change();	
+    });
+	
 
-  $.getJSON('./data/prelinger_extended-search.json', function(data) {
-    extended_json = data;
-    $('#loader').hide();
-  });
+    $.getJSON('./data/prelinger_extended-search.json', function(data) {
+	extended_json = data;
+	currentItems = $('.thumbs li');
+	revealThumbs();
+    });
 
-  currentItems = $('.thumbs li');
-  revealThumbs();
 });
 
 

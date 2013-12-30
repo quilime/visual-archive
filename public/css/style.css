@@ -1,4 +1,7 @@
 /* style.css */
+
+@import url(http://fonts.googleapis.com/css?family=Archivo+Narrow);
+
 body {
     background: #1a1a1a;
     color:#ddd;
@@ -12,7 +15,7 @@ ul, li {
     margin:0;
 }
 a {
-    color:#999;
+    color:#aaa;
     text-decoration: none;
 }
 a:hover {
@@ -21,15 +24,79 @@ a:hover {
 input {
     font-family: sans-serif;
     color:#ddd;
-    font-size:14px;
+    font-size:18px;
     background:#111;
     border:1px solid #555;
     padding:5px;
+    width:95%;
+}
+/* all */
+::-webkit-input-placeholder { color:#555; }
+::-moz-placeholder { color:#555; } /* firefox 19+ */
+:-ms-input-placeholder { color:#555; } /* ie */
+input:-moz-placeholder { color:#555; }
+
+
+#nav {
+    text-align:center;
+}
+#nav h1 {
+/* font-family: 'Abel', sans-serif; */
+/*    font-family: 'Codystar', cursive; */
+    font-family: 'Archivo Narrow', sans-serif; 
+    color:#ddc;
+    font-size:3em;
+    font-weight:normal;
 }
 
+#filter-elem {
+}
+#filter {
+    margin:20px 0;
+}
+#filters {
+    display:inline-block;
+    margin:0 auto;
+    width:auto;
+}
+
+#facets > li {
+    display:inline-block;
+    margin:0 2px;
+}
+#facets > li > a {
+    display:inline-block;
+    background:#000;
+    padding:5px 20px;
+    font-weight:bold;
+}
+#facets > li > ul {
+    text-align:left;
+    background:#090909;
+    box-shadow:4px 4px 4px rgba(0,0,0,0.5);
+    padding:6px;
+    display:none;
+}
+#facets > li > ul > li > a {
+    display:block;
+}
+
+#clear_filter {
+    padding:0.5em;
+}
+
+#info {
+    position:absolute;
+    top:5px;
+    right:10px;
+}
+
+
+
+
+
+
 ul.thumbs {
-    margin-top:2px;
-    margin-left:150px;
 }
 ul.thumbs li {
     margin:5px;
@@ -47,36 +114,4 @@ ul.thumbs li a {
 ul.thumbs li img {
     width:160px;
     height:110px;
-}
-#filter-elem {
-    position: absolute;
-    left:5px;
-    top:45px;
-}
-#filter {
-    width:100px;
-}
-#facets {
-    position:absolute;
-    left:5px;
-    top:100px;
-}
-#faces a {
-}
-
-#clear_filter {
-    padding:0.5em;
-}
-
-#videoplayer {
-    width:100%;
-    height:100%;
-    overflow: auto;
-}
-
-#info {
-    display:inline-block;
-    position:absolute;
-    top:0;
-    left:5px;
 }
