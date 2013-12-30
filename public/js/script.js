@@ -1,5 +1,5 @@
 var extended_json = {};
-var numItems = 0;
+var currentItems = [];
 
 var revealThumbs = function() {
 
@@ -10,7 +10,7 @@ var revealThumbs = function() {
     var winInnerW = $(window).innerWidth();
     var winInnerH = $(window).innerHeight();
     var numCols = Math.floor(thumbsW / thumbW);
-    var numRows = Math.floor(winInnerH / thumbH)
+    var numRows = Math.ceil(winInnerH / thumbH) * 2;
     var offset  = Math.max(Math.floor($(window).scrollTop() / thumbH) * numCols, 0);
 /*
     console.log( 
@@ -21,55 +21,60 @@ var revealThumbs = function() {
     );
 */
     var c = 0;
-    $.each( $('.thumbs li'), function( key, elem ) {
+    $.each( currentItems, function( key, elem ) {
 	if (key >= offset && key < offset + numCols * numRows) {
-	    if ($(elem).find('img').length === 0) {
-
-		var img = $('<img/>');
-		img.attr('src', $(elem).attr('data-thumb-src'));
-		img.hide();
-		setTimeout(function() { img.fadeIn(); }, 50 * c);
-
-		var a = $('<a>');
-		a.attr('href', $(elem).attr('data-thumbs-url'));
-		a.attr('target', '_blank');
-		a.append(img);
-
-		var th_nm = $(elem).attr('data-thumb-src').split("/");
-		th_nm = th_nm[th_nm.length-1];
-
-		a.hover(function() {
-		    img.attr('src', 'gifs/prelinger_anim/' + th_nm);
-		});
-		a.mouseout(function() {
-		    img.attr('src', 'gifs/prelinger_static/' + th_nm);
-		});
-
-
-		$(elem).append(a);
-
-		c++;
-	    }
+	    loadThumb(elem, 10 * c);
+	    c++;
 	}
     });
+}
+
+var loadThumb = function(elem, fadeOffset) {
+
+    if ($(elem).find('img').length > 0) {
+	return;
+    }
+    
+    var img = $('<img/>');
+    img.attr('src', $(elem).attr('data-thumb-src'));
+    img.hide();
+    setTimeout(function() { img.fadeIn(150); }, fadeOffset);
+    
+    var a = $('<a>');
+    a.attr('href', $(elem).attr('data-thumbs-url'));
+    a.attr('target', '_blank');
+    a.append(img);
+    
+    var th_nm = $(elem).attr('data-thumb-src').split("/");
+    th_nm = th_nm[th_nm.length-1];
+    
+    a.hover(function() {
+	img.attr('src', 'gifs/prelinger_anim/' + th_nm);
+    });
+    a.mouseout(function() {
+	img.attr('src', 'gifs/prelinger_static/' + th_nm);
+    });
+   
+    $(elem).append(a);
 }
 
 
 $(document).ready(function() {
 
-  revealThumbs();
   window.onscroll = debounce(function (e) {
       revealThumbs();
   }, 250, false);
 
   $('#facets a').each(function(key, elem) {
-    $(elem).click(function() {
+    $(elem).click(function(e) {
+      e.preventDefault();
       $('#filter').val($(elem).text());
       on_filter_change();
     });
   })
 
-  $('#clear_filter').click(function(){
+  $('#clear_filter').click(function(e){
+    e.preventDefault();
     $('#filter').val("");
     on_filter_change();
   });
@@ -80,12 +85,13 @@ $(document).ready(function() {
     $('#loader').hide();
   });
 
-  numItems = $('.thumbs li').length;
-    
+  currentItems = $('.thumbs li');
+  revealThumbs();
 });
 
 
 var on_filter_change = function() {
+    $(document).scrollTop(0);
   var query = $('#filter').val().toLowerCase();
   var d = jQuery.grep(extended_json.clips, function(clip, i) {
     if (clip.id.toLowerCase().indexOf(query) >= 0 ||
@@ -98,11 +104,16 @@ var on_filter_change = function() {
     return false;
   });
 
-  $('.thumbs li').hide();
+    $('.thumbs li').hide();
 
-  for (var i = 0; i < d.length; i++) {
-    $('.thumbs li#' + d[i].id).show();
-  }
+
+    currentItems = [];
+    for (var i = 0; i < d.length; i++) {
+	var elem = $('.thumbs li#' + d[i].id)[0];
+	$('.thumbs li#' + d[i].id).show();
+	currentItems.push($('.thumbs li#' + d[i].id)[0]);
+    }
+    revealThumbs(); 
 
 };
 
