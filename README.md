@@ -5,4 +5,5 @@ http://archive.galadu.com
 Created by Gabriel Dunne  
 Facets by Susan Doran  
 Footage Archive Source: Archive.org, Prelinger Archive  
-[Tribec4 H4cks](http://www.gaffta.org/2013/02/24/tribeca-hacks-archives/) 
+
+http://grayarea.org/looking-back-at-tribeca-hacks-archives/
