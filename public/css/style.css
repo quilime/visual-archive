@@ -1,9 +1,8 @@
 /* style.css */
 body {
     background: #1a1a1a;
-    color:#555;
+    color:#ddd;
     font-family: sans-serif;;
-    font-size: 12px;
     line-height:1.8em;
 }
 ul, li {
@@ -12,7 +11,7 @@ ul, li {
     margin:0;
 }
 a {
-    color:#aaa;
+    color:#999;
     text-decoration: none;
 }
 a:hover {
@@ -20,8 +19,8 @@ a:hover {
 }
 input {
     font-family: sans-serif;
-    font-size: 12px;
-    color:#aaa;
+    color:#ddd;
+    font-size:14px;
     background:#111;
     border:1px solid #555;
     padding:5px;
@@ -33,12 +32,16 @@ ul.thumbs {
 }
 ul.thumbs li {
     margin:5px;
-    display:inline-block;
-}
-ul.thumbs li a {
-    display:inline-block;
+    padding:0px;
+    display:block;
+    float:left;
     width:160px;
     height:110px;
+}
+ul.thumbs li a {
+    width:160px;
+    height:110px;
+    display:block;
     background:#222;
 }
 ul.thumbs li img {

@@ -3,13 +3,13 @@
 <head>
   <title><%= title %></title>
   <link rel='stylesheet' href='/css/style.css' />
-  <script src="js/jquery-1.9.1.min.js" type="text/javascript" ></script>
-  <script src="js/jquery.paginate.js" type="text/javascript" ></script>
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript" ></script>
+  <script src ="js/jquery.ba-throttle-debounce.js" type="text/javscript" ></script>
   <script src="js/script.js" type="text/javascript" ></script>
 </head>
 <body>
 
-<div id="loader">loading...</div>
+<!--<div id="loader">loading...</div>-->
 
 <div id="filter-elem">
   <input type="text" id="filter" /> <a href="#" id="clear_filter">&times;</a>
@@ -19,18 +19,17 @@
   <% include filter-prelinger.ejs %>
 </div>
 
-<div id="thumbs-pagination" style="display:none">
-    <a id="thumbs-previous" href="#" class="disabled">&laquo; Previous</a>
-    <a id="thumbs-next" href="#">Next &raquo;</a>
-</div>
+<ul id="thumbs" class="thumbs">
+  <% for(var i = 0; i < clips.length; i++) { %>
+    <li id="<%= clips[i].id %>" data-thumb-src="<%= clips[i].thumb_imgsrc %>">
+<!--      <a href="<%= clips[i].thumbnails_url %>">       
+	<img src="<%= clips[i].thumb_imgsrc %>"> 
+      </a>
+-->
+    </li>
+  <% } %>
+</ul>
 
-<div id="minimap">
-  <canvas id="minimap-canvas"></canvas>
-  <div class="view"></div>
-</div>
-
-<div id="subcontent"><div class="container"></div></div>
-<div id="scrim"></div>
 
 </body>
 </html>

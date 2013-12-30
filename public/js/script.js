@@ -1,52 +1,50 @@
 var extended_json = {};
+var numItems = 0;
 
+var init = function() {
+    revealThumbs();
+    window.onscroll = debounce(function (e) {
+	revealThumbs();
+    }, 250, false);
+}
 
-var mm = {};
-mm.th = 110;
-mm.tw = 160;
-mm.numW = 0;
-mm.numTH = 0;
-mm.draw = function() {
+var revealThumbs = function() {
 
-    var mmth = 5;
-    var mmtw = 8;
-
-    console.log(mm.numW, mm.numTH);
-
-    var canvas = document.getElementById('minimap-canvas');
-    if (canvas.getContext) {
-
-	canvas.width  = 160;
-	canvas.height = 2000;
-
-	var ctx = canvas.getContext('2d');
-	ctx.fillStyle = "white";
-
-	for(var j = 0; j < mm.numTH / mm.numW; j++) {
-	    for (var i = 0; i < mm.numW; i++) {
-		ctx.fillRect((mmtw + 2) * i, (mmth + 2)*j, mmtw, mmth);
+    var thumbMargin = 5;
+    var thumbsW = $('#thumbs').width();
+    var thumbW  = 160 + thumbMargin * 2;
+    var thumbH  = 110 + thumbMargin * 2;
+    var winInnerW = $(window).innerWidth();
+    var winInnerH = $(window).innerHeight();
+    var numCols = Math.floor(thumbsW / thumbW);
+    var numRows = Math.floor(winInnerH / thumbH)
+    var offset  = Math.max(Math.floor($(window).scrollTop() / thumbH) * numCols, 0);
+/*
+    console.log( 
+	numCols,
+	numRows,
+	numCols * numRows,
+	offset	
+    );
+*/
+    var c = 0;
+    $.each( $('.thumbs li'), function( key, elem ) {
+	if (key >= offset && key < offset + numCols * numRows) {
+	    if ($(elem).find('img').length === 0) {
+		var img = $('<img/>');
+		img.attr('src', $(elem).attr('data-thumb-src'));
+		img.hide();
+		$(elem).append(img);
+		setTimeout(function() { img.fadeIn(); }, 50 * c);
+		c++;
 	    }
 	}
-    }
-};
-mm.update = function() {
-    mm.numW = Math.floor($("ul.thumbs").width() / (mm.tw + 20));
-    mm.draw();
-};
-
-$(window).resize(function() {
-    setTimeout(mm.update, 1000);
-});
-
-$(document).scroll(function() {
-    $('#minimap .view').css({top : ($(document).scrollTop() * 0.05) + "px"  });;
-});
-
+    });
+    
+}
 
 
 $(document).ready(function() {
-
-  $('#thumbs').hide();
 
   $('#facets a').each(function(key, elem) {
     $(elem).click(function() {
@@ -64,26 +62,17 @@ $(document).ready(function() {
   $.getJSON('./data/prelinger_extended-search.json', function(data) {
     extended_json = data;
     $('#loader').hide();
-    $('#thumbs').show();
-
-    mm.numTH = extended_json.clips.length;
-    mm.update();
   });
 
-  $('#scrim').click(function() {
-    $('#subcontent').fadeOut(100, function() {
-      scrim(0);
-      $('#subcontent .container').empty();
-    });
-  });
 
+    numItems = $('.thumbs li').length;
 
   $.each( $('.thumbs li'), function( key, elem ) {
 
     var id = $(elem).attr('id')
     var thumb_static = $(elem).find('img').attr('src');
-    var thumb_name = thumb_static.split("/");
-    thumb_name = thumb_name[thumb_name.length-1];
+      var thumb_name = ""; //thumb_static.split("/");
+//    thumb_name = thumb_name[thumb_name.length-1];
 
     var link = $(elem).find('a');
     var img = $(link).find('img');
@@ -136,7 +125,7 @@ $(document).ready(function() {
   });
   
 
-
+    init();
 
 });
 
@@ -160,15 +149,30 @@ var on_filter_change = function() {
     $('.thumbs li#' + d[i].id).show();
   }
 
-  mm.numTH = i;
-  mm.update();
 };
 
 
-var scrim = function(visible, callback) {
-  var s = $('#scrim');
-  if (visible == 1)
-    s.fadeIn(150, callback);
-  else
-    s.fadeOut(150, callback);
-};
+
+
+var debounce = function (func, threshold, execAsap) {
+ 
+    var timeout;
+ 
+    return function debounced () {
+        var obj = this, args = arguments;
+        function delayed () {
+            if (!execAsap)
+                func.apply(obj, args);
+            timeout = null; 
+        };
+ 
+        if (timeout)
+            clearTimeout(timeout);
+        else if (execAsap)
+            func.apply(obj, args);
+ 
+        timeout = setTimeout(delayed, threshold || 100); 
+    };
+ 
+}
+

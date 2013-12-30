@@ -10,6 +10,8 @@ exports.index = function(req, res) {
     if (LIMIT) { count--; if (count == 0) { break; } }
     var clip = prelinger.clips[i];
     var ext = clip.thumbnail_filename.split('.')[1];
+    clip.thumb_imgsrc = 'gifs/prelinger_static/' + clip.thumbnail_filename;
+//gifs/prelinger_static/<%= clips[i].thumbnail_filename %>
     if (ext == 'gif') {
       clips.push(clip);
     }
