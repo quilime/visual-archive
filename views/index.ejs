@@ -21,13 +21,7 @@
 
 <ul id="thumbs" class="thumbs">
   <% for(var i = 0; i < clips.length; i++) { %>
-    <li id="<%= clips[i].id %>" data-thumb-src="<%= clips[i].thumb_imgsrc %>"
-	data-thumbs-url="<%= clips[i].thumbnails_url %>">
-<!--      <a href="<%= clips[i].thumbnails_url %>">       
-	<img src="<%= clips[i].thumb_imgsrc %>"> 
-      </a>
--->
-    </li>
+    <li id="<%= clips[i].id %>" data-thumb-src="<%= clips[i].thumb_imgsrc %>" data-thumbs-url="<%= clips[i].thumbnails_url %>"></li>
   <% } %>
 </ul>
 
