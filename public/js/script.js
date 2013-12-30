@@ -34,8 +34,14 @@ var revealThumbs = function() {
 		var img = $('<img/>');
 		img.attr('src', $(elem).attr('data-thumb-src'));
 		img.hide();
-		$(elem).append(img);
 		setTimeout(function() { img.fadeIn(); }, 50 * c);
+
+		var a = $('<a>');
+		a.attr('href', $(elem).attr('data-thumbs-url'));
+		a.attr('target', '_blank');
+		a.append(img);
+		$(elem).append(a);
+
 		c++;
 	    }
 	}
