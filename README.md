@@ -1,9 +1,13 @@
-A tool for exploring footage collections on archive.org.
+# Visual Archive
 
-http://archive.galadu.com
+"Visual Archive" is a tool for exploring footage collections from archive.org.
+
+* http://archive.galadu.com
+* http://grayarea.org/looking-back-at-tribeca-hacks-archives/
 
 Created by Gabriel Dunne  
 Facets by Susan Doran  
 Footage Archive Source: Archive.org, Prelinger Archive  
 
-http://grayarea.org/looking-back-at-tribeca-hacks-archives/
+
+
