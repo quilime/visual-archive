@@ -41,9 +41,7 @@ var loadThumb = function(elem, fadeOffset) {
 	setTimeout(function() { img.fadeIn(150); }, fadeOffset);
     });
     
-    var a = $('<a>');
-    a.attr('href', $(elem).attr('data-thumbs-url'));
-    a.attr('target', '_blank');
+    var a = $(elem).find('a');
     a.append(img);
     
     var th_nm = $(elem).attr('data-thumb-src').split("/");
@@ -55,8 +53,6 @@ var loadThumb = function(elem, fadeOffset) {
     a.mouseout(function() {
 	img.attr('src', 'gifs/prelinger_static/' + th_nm);
     });
-
-
    
     $(elem).append(a);
 }
